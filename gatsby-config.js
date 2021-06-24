@@ -1,33 +1,27 @@
 const packageData = require('./package.json');
 
-const title = 'MBBGS';
+const title = 'The Principled Engineer';
 
 module.exports = {
   siteMetadata: {
     title,
     author: {
       name: 'Phillip Luther',
-      summary: '... the author summary ...',
-      email: 'author@author.author',
+      summary: `<p>Phillip (Phil) Luther builds web applications and has clocked nearly 20 years in the frontend trenches. He remembers when jQuery was new and still shudders when thinking of sliding door jelly buttons. His current areas of interest include web accessibility, the web audio API, and digital (ethics|privacy|rights). If pressed, he prefers Vue to React ... but only by the narrowest margin. Feel free to <a href="mailto:dev@phillipluther.com">ask him why</a>.</p><p>Phil currently works as an actively-coding engineering manager in San Francisco, CA.</p>`,
+      email: 'dev@phillipluther.com',
+      twitter: 'phillipluther',
+      linkedIn: 'phillipluther',
     },
     description: packageData.description,
     siteUrl: packageData.homepage,
     social: [
       {
         href: 'https://twitter.com/phillipluther',
-        label: '@phillipluther on Twitter',
+        label: '@prinengineer on Twitter',
       },
       {
-        href: 'https://www.youtube.com/phillipluther',
-        label: '@phillipluther on YouTube',
-      },
-      {
-        href: 'https://www.linkedin.com/in/phillipluther/',
-        label: 'phillipluther on LinkedIn',
-      },
-      {
-        href: 'https://www.instagram.com/phillipluthertoo/',
-        label: 'phillipluthertoo on Instagram',
+        href: 'mailto:phil@principledengineer.com',
+        label: 'Email phil@principledengineer.com',
       },
     ],
   },

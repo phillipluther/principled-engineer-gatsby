@@ -1,10 +1,3 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
@@ -18,31 +11,49 @@ const Bio: React.FC = () => {
             name
             summary
             email
+            twitter
+            linkedIn
           }
         }
       }
     }
   `);
 
-  const author = data.site.siteMetadata?.author;
-  const authorName = author?.name || 'Author Bio';
-  const authorSummary = author?.summary;
-  const authorEmail = author?.email;
+  const {
+    name,
+    summary,
+    email,
+    twitter,
+    linkedIn,
+  } = data.site.siteMetadata.author;
 
   return (
     <aside className="bio">
-      <h2 className="bio-name">About the Author, {authorName}</h2>
+      <h2 className="bio-name">About the Author: {name}</h2>
       <StaticImage
         className="bio-avatar"
         layout="fixed"
-        src="../../images/fpo.png"
+        src="../../images/portraitAvatar.png"
         width={120}
         height={120}
         quality={95}
-        alt={authorName}
+        alt={name}
       />
-      {authorSummary && <p>{authorSummary || null}</p>}
-      {authorEmail && <p><a href={`mailto:${authorEmail}`}>Email me</a></p>}
+      <div dangerouslySetInnerHTML={{ __html: summary }} />
+      <h3>Contact the Author</h3>
+      <ul>
+        <li>
+          <a href={`https://twitter.com/${twitter}`}>
+            {`@${twitter}`} on Twitter
+          </a>
+        </li>
+        <li>
+          <a href={`mailto:${email}`}>Email {email}</a>
+        </li>
+        <li>
+          <a href={`https://linkedin/in/${linkedIn}`}>Connect on LinkedIn</a>
+        </li>
+      </ul>
     </aside>
   );
 };

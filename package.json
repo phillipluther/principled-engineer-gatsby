@@ -1,7 +1,7 @@
 {
-  "name": "my-blank-blog-gatsby-starter",
+  "name": "principled-engineer",
   "private": true,
-  "description": "A personal Gatsby starter seeded from gatsby-starter-blog",
+  "description": "Web accessibility, UI craftsmanship, ethics in tech, and frontend engineering chatter about building good things.",
   "version": "0.1.0",
   "author": "Phillip Luther <dev@phillipluther.com>",
   "dependencies": {
@@ -37,12 +37,12 @@
     "@types/react-helmet": "^6.1.1",
     "prettier": "2.2.1"
   },
-  "homepage": "https://github.com/phillipluther/my-personal-gatsby-starter#readme",
+  "homepage": "https://principledengineer.com",
   "license": "UNLICENSED",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/phillipluther/my-blank-blog-gatsby-starter.git"
+    "url": "git+https://github.com/phillipluther/principled-engineer.git"
   },
   "scripts": {
     "build": "gatsby build",
