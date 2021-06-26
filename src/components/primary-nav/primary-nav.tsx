@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
+import ALink from '../a-link';
 import * as styles from './primary-nav.module.css';
 
 interface PrimaryNavProps {
@@ -15,14 +15,14 @@ const PrimaryNav: React.FC<PrimaryNavProps> = ({ className, children, noHome }) 
       <ul>
         {!noHome && (
           <li>
-            <Link to="/">Home</Link>
+            <ALink to="/">Home</ALink>
           </li>
         )}
         <li>
-          <Link to="/about">About</Link>
+          <ALink to="/about">About</ALink>
         </li>
         <li>
-          <Link to="/contact">Contact</Link>
+          <ALink to="/contact">Contact</ALink>
         </li>
         {children}
       </ul>

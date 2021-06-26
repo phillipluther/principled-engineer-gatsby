@@ -48,7 +48,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 630,
+              maxWidth: 760,
             },
           },
           {
@@ -61,6 +61,14 @@ module.exports = {
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /\.inline\.svg/,
+        },
       },
     },
     'gatsby-transformer-sharp',
@@ -129,16 +137,13 @@ module.exports = {
         name: title,
         short_name: title,
         start_url: '/',
-        background_color: '#ffffff',
-        theme_color: '#663399',
+        background_color: '#fffbeb',
+        theme_color: '#374151',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        icon: 'src/images/principled-engineer-badge-icon.png',
       },
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-gatsby-cloud',
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 };

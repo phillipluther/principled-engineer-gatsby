@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 import { RouteComponentProps } from '@reach/router';
-import { SkipNavLink, SkipNavContent } from '@reach/skip-nav';
+import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
+import VisuallyHidden from '@reach/visually-hidden';
 import PrimaryNav from '../primary-nav';
 import SocialLinks from '../social-links';
+import Logo from '../../images/principled-engineer-logo.inline.svg';
 
 import * as styles from './header.module.css';
 import '@reach/skip-nav/styles.css';
@@ -24,7 +26,8 @@ const Header: React.FC<HeaderProps> = ({ title, location }) => {
 
         <TitleTag className={styles.title}>
           <Link to="/" className={styles.homeLink}>
-            {title}
+            <VisuallyHidden>{title}</VisuallyHidden>
+            <Logo role="presentation" alt="" />
           </Link>
         </TitleTag>
 
