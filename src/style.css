@@ -3,6 +3,7 @@ html {
 }
 
 body {
+  font-family: 'Georgia', serif;
   font-size: 1rem;
   line-height: 1;
   color: #374151;
@@ -12,4 +13,25 @@ html,
 body {
   margin: 0;
   padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Imbue', 'Georgia', serif;
+}
+
+@media (min-width: 600px) {
+  html {
+    font-size: 1.1em;
+  }
+}
+
+@media(min-width: 900px) {
+  html {
+    font-size: 1.2em;
+  }
 }

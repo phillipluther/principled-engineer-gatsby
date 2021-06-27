@@ -1,5 +1,6 @@
 import './src/style.css';
 import 'prismjs/themes/prism.css';
+import '@fontsource/imbue/variable.css';
 
 
 /**

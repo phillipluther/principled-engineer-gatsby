@@ -15,7 +15,7 @@ const PrimaryNav: React.FC<PrimaryNavProps> = ({ className, children, noHome }) 
       <ul className={styles.list}>
         {!noHome && (
           <li className={styles.item}>
-            <ALink to="/" className={styles.link}>Home</ALink>
+            <ALink to="/" className={styles.link}>Blog Posts</ALink>
           </li>
         )}
         <li className={styles.item}>
