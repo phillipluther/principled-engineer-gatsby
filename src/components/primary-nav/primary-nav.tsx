@@ -12,17 +12,17 @@ const PrimaryNav: React.FC<PrimaryNavProps> = ({ className, children, noHome }) 
 
   return (
     <nav className={wrapperClasses}>
-      <ul>
+      <ul className={styles.list}>
         {!noHome && (
-          <li>
-            <ALink to="/">Home</ALink>
+          <li className={styles.item}>
+            <ALink to="/" className={styles.link}>Home</ALink>
           </li>
         )}
-        <li>
-          <ALink to="/about">About</ALink>
+        <li className={styles.item}>
+          <ALink to="/about" className={styles.link}>About</ALink>
         </li>
-        <li>
-          <ALink to="/contact">Contact</ALink>
+        <li className={styles.item}>
+          <ALink to="/contact" className={styles.link}>Contact</ALink>
         </li>
         {children}
       </ul>
