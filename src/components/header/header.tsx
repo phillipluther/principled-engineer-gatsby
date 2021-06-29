@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { RouteComponentProps } from '@reach/router';
-import { SkipNavLink, SkipNavContent } from '@reach/skip-nav';
 import VisuallyHidden from '@reach/visually-hidden';
 import PrimaryNav from '../primary-nav';
 import SocialLinks from '../social-links';
@@ -22,7 +21,7 @@ const Header: React.FC<HeaderProps> = ({ title, location }) => {
   return (
     <>
       <header className={styles.wrapper}>
-        <SkipNavLink />
+        <Link external href="#skipNav" className={styles.skipNav}>Skip to Content</Link>
 
         <TitleTag className={styles.title}>
           <Link to="/" className={styles.homeLink}>
@@ -34,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ title, location }) => {
         <PrimaryNav />
         <SocialLinks />
       </header>
-      <SkipNavContent />
+      <a id="skipNav" />
     </>
   );
 };
