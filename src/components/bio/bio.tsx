@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
+import Link from '../link';
 
 const Bio: React.FC = () => {
   const data = useStaticQuery(graphql`
@@ -19,13 +20,7 @@ const Bio: React.FC = () => {
     }
   `);
 
-  const {
-    name,
-    summary,
-    email,
-    twitter,
-    linkedIn,
-  } = data.site.siteMetadata.author;
+  const { name, summary, email, twitter, linkedIn } = data.site.siteMetadata.author;
 
   return (
     <aside className="bio">
@@ -43,15 +38,19 @@ const Bio: React.FC = () => {
       <h3>Contact the Author</h3>
       <ul>
         <li>
-          <a href={`https://twitter.com/${twitter}`}>
+          <Link external href={`https://twitter.com/${twitter}`}>
             {`@${twitter}`} on Twitter
-          </a>
+          </Link>
         </li>
         <li>
-          <a href={`mailto:${email}`}>Email {email}</a>
+          <Link external href={`mailto:${email}`}>
+            Email {email}
+          </Link>
         </li>
         <li>
-          <a href={`https://linkedin/in/${linkedIn}`}>Connect on LinkedIn</a>
+          <Link external href={`https://linkedin/in/${linkedIn}`}>
+            Connect on LinkedIn
+          </Link>
         </li>
       </ul>
     </aside>

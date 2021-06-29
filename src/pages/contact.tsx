@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { Link, graphql, PageProps } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import Layout from '../components/layout';
+import Link from '../components/link';
 
-const ContactPage: React.FC<PageProps> = ({
-  data: {
-    site: {
-      siteMetadata: {
-        title,
-        author,
-        social,
+const ContactPage: React.FC<PageProps> = (
+  {
+    data: {
+      site: {
+        siteMetadata: { title, author, social },
       },
     },
   },
-}, location) => (
+  location,
+) => (
   <Layout title={`${title}: ContactInfo`} location={location}>
     <Helmet title={`${title}: Contact Info`} />
     <div>
@@ -22,11 +22,15 @@ const ContactPage: React.FC<PageProps> = ({
 
       <ul>
         <li>
-          <a href={`mailto:${author.email}`}>{author.email}</a>
+          <Link external href={`mailto:${author.email}`}>
+            {author.email}
+          </Link>
         </li>
         {social.map(({ href, label }) => (
-          <li>
-            <a href={href}>{label}</a>
+          <li key={href}>
+            <Link external href={href}>
+              {label}
+            </Link>
           </li>
         ))}
       </ul>

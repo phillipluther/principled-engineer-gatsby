@@ -9,19 +9,11 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const { previous, next } = data;
-  const {
-    title: postTitle,
-    description,
-    date,
-    coverImage,
-  } = post.frontmatter;
+  const { title: postTitle, description, date, coverImage } = post.frontmatter;
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo
-        title={postTitle}
-        description={description || post.excerpt}
-      />
+      <Seo title={postTitle} description={description || post.excerpt} />
       <article className="blog-post" itemScope itemType="http://schema.org/Article">
         <header>
           <h1 itemProp="headline">{postTitle}</h1>

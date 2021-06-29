@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import dashify from 'dashify';
 import VisuallyHidden from '@reach/visually-hidden';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import Link from '../link';
 
 interface PostSummaryProps {
   title: string;
@@ -21,11 +22,14 @@ const PostSummary: React.FC<PostSummaryProps> = ({
   slug,
   tags,
 }) => {
-
   return (
     <article className="post-summary">
       <header>
-        <h3><Link to={slug} tabIndex={-1}>{title}</Link></h3>
+        <h3>
+          <Link to={slug} tabIndex={-1}>
+            {title}
+          </Link>
+        </h3>
         <p>{date}</p>
 
         {coverImage && (
@@ -57,7 +61,7 @@ const PostSummary: React.FC<PostSummaryProps> = ({
         </ul>
       </footer>
     </article>
-  )
+  );
 };
 
 export default PostSummary;
@@ -71,7 +75,7 @@ export const postSummaryQuery = graphql`
     frontmatter {
       title
       description
-      date(formatString: "MMMM DD, YYYY") 
+      date(formatString: "MMMM DD, YYYY")
       coverImage {
         childImageSharp {
           gatsbyImageData(layout: CONSTRAINED)

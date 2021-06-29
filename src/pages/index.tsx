@@ -19,11 +19,7 @@ const BlogIndex: React.FC<PageProps> = ({ data, location }) => {
 
           return (
             <li key={post.fields.slug}>
-              <PostSummary
-                slug={slug}
-                description={description || excerpt }
-                {...summaryProps}
-              />
+              <PostSummary slug={slug} description={description || excerpt} {...summaryProps} />
             </li>
           );
         })}

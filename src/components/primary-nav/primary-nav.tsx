@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ALink from '../a-link';
+import Link from '../link';
 import * as styles from './primary-nav.module.css';
 
 interface PrimaryNavProps {
@@ -15,19 +15,25 @@ const PrimaryNav: React.FC<PrimaryNavProps> = ({ className, children, noHome }) 
       <ul className={styles.list}>
         {!noHome && (
           <li className={styles.item}>
-            <ALink to="/" className={styles.link}>Blog Posts</ALink>
+            <Link to="/" className={styles.link}>
+              Blog Posts
+            </Link>
           </li>
         )}
         <li className={styles.item}>
-          <ALink to="/about" className={styles.link}>About</ALink>
+          <Link to="/about" className={styles.link}>
+            About
+          </Link>
         </li>
         <li className={styles.item}>
-          <ALink to="/contact" className={styles.link}>Contact</ALink>
+          <Link to="/contact" className={styles.link}>
+            Contact
+          </Link>
         </li>
         {children}
       </ul>
     </nav>
   );
-}
+};
 
 export default PrimaryNav;

@@ -6,11 +6,14 @@ import Layout from '../components/layout';
 
 const pageTitle = 'Browse Post Categories';
 
-const TagsPage: React.FC<PageProps> = ({
-  data: {
-    allMarkdownRemark: { group },
+const TagsPage: React.FC<PageProps> = (
+  {
+    data: {
+      allMarkdownRemark: { group },
+    },
   },
-}, location) => (
+  location,
+) => (
   <Layout title={pageTitle} location={location}>
     <Helmet title={pageTitle} />
     <div>

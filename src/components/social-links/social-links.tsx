@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import VisuallyHidden from '@reach/visually-hidden';
+import { IconType } from 'react-icons';
 import {
   FaTwitter,
   FaYoutube,
@@ -9,7 +10,7 @@ import {
   FaEnvelope,
   FaPinterest,
 } from 'react-icons/fa';
-
+import Link from '../link';
 import * as styles from './social-links.module.css';
 
 const SocialLinks: React.FC = () => {
@@ -29,8 +30,8 @@ const SocialLinks: React.FC = () => {
   return (
     <ul className={styles.wrapper}>
       {data.site.siteMetadata.social.map(({ href, label }) => {
-        let Icon: React.ReactNode;
-        
+        let Icon: IconType;
+
         // TODO: there's assuredly a _much_ better way to do this; look into it someday
         if (/twitter\.com/.test(href)) {
           Icon = FaTwitter;
@@ -44,16 +45,16 @@ const SocialLinks: React.FC = () => {
           Icon = FaPinterest;
         } else {
           Icon = FaEnvelope;
-        };
+        }
 
         return (
           <li key={href}>
-            <a href={href}>
+            <Link external href={href}>
               <VisuallyHidden>{label}</VisuallyHidden>
-              <Icon role="presentation" alt="" />
-            </a>
+              <Icon role="presentation" />
+            </Link>
           </li>
-        )
+        );
       })}
     </ul>
   );

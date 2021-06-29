@@ -2,7 +2,6 @@ import './src/style.css';
 import 'prismjs/themes/prism.css';
 import '@fontsource/imbue/variable.css';
 
-
 /**
  * Keyboard nav and high contrast hooks; if we detect kb nav we add a class to the
  * body tag for styling. helps keep heavy borders and focus rings off of buttons
@@ -28,4 +27,3 @@ function activateKeyboardNav({ key }) {
 if (typeof window !== 'undefined') {
   window.addEventListener('keydown', activateKeyboardNav);
 }
-

@@ -27,11 +27,7 @@ const TagsTemplate: React.FC<PageProps> = ({ pageContext, data }) => {
 
           return (
             <li key={slug}>
-              <PostSummary
-                slug={slug}
-                description={description || excerpt }
-                {...summaryProps}
-              />
+              <PostSummary slug={slug} description={description || excerpt} {...summaryProps} />
             </li>
           );
         })}

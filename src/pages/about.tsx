@@ -3,13 +3,16 @@ import { Link, graphql, PageProps } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import Layout from '../components/layout';
 
-const AboutPage: React.FC<PageProps> = ({
-  data: {
-    site: {
-      siteMetadata: { title },
+const AboutPage: React.FC<PageProps> = (
+  {
+    data: {
+      site: {
+        siteMetadata: { title },
+      },
     },
   },
-}, location) => (
+  location,
+) => (
   <Layout title={title} location={location}>
     <Helmet title={`About ${title}`} />
     <div>

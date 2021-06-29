@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
 import { RouteComponentProps } from '@reach/router';
-import { SkipNavLink, SkipNavContent } from '@reach/skip-nav'
+import { SkipNavLink, SkipNavContent } from '@reach/skip-nav';
 import VisuallyHidden from '@reach/visually-hidden';
 import PrimaryNav from '../primary-nav';
 import SocialLinks from '../social-links';
+import Link from '../link';
 import Logo from '../../images/principled-engineer-logo.inline.svg';
 
 import * as styles from './header.module.css';

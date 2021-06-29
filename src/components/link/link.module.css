@@ -1,0 +1,15 @@
+.link {
+  color: #92400e;
+  position: relative;
+}
+
+.link:focus {
+  outline: 2px solid #5f0d00;
+  outline-offset: 4px;
+}
+
+.link:hover,
+:global(.kb-active) .link:focus {
+  color: #5f0d00;
+  text-decoration: none;
+}
