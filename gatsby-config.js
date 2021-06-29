@@ -12,7 +12,7 @@ module.exports = {
       twitter: 'phillipluther',
       linkedIn: 'phillipluther',
     },
-    description: packageData.description,
+    description: 'HTML/CSS/JavaScript tutorials, modern engineering techniques, and stories from 20 years in the frontend trenches',
     siteUrl: packageData.homepage,
     social: [
       {
