@@ -5,6 +5,8 @@ import PrimaryNav from '../primary-nav';
 import SocialLinks from '../social-links';
 import Link from '../link';
 
+import * as styles from './footer.module.css';
+
 const Footer: React.FC = () => {
   const data = useStaticQuery(graphql`
     query FooterQuery {
@@ -19,7 +21,7 @@ const Footer: React.FC = () => {
   const { title: siteTitle } = data.site.siteMetadata;
 
   return (
-    <footer>
+    <footer className={styles.wrapper}>
       <VisuallyHidden as="h2">Page Footer</VisuallyHidden>
 
       <section>

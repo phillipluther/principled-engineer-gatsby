@@ -43,8 +43,12 @@ const Header: React.FC<RouteComponentProps> = ({ location }) => {
 
         {showSupplementalBranding && (
           <div>
+            <hr className={styles.divider} />
+
             <p className={styles.tagline}>Code well. Code good.</p>
-            <p>{description}</p>
+            <p className={styles.description}>{description}</p>
+
+            <hr className={styles.divider} />
           </div>
         )}
 
