@@ -39,7 +39,7 @@ const PostSummary: React.FC<PostSummaryProps> = ({
         )}
       </header>
 
-      <div>{description}</div>
+      <p>{description}</p>
 
       <footer>
         <Link to={slug}>

@@ -6,7 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 import PrimaryNav from '../primary-nav';
 import SocialLinks from '../social-links';
 import Link from '../link';
-import Logo from '../../images/principled-engineer-logo.inline.svg';
+import Logo from '../../images/principled-engineer-logo-text.inline.svg';
 
 import * as styles from './header.module.css';
 
@@ -40,11 +40,10 @@ const Header: React.FC<RouteComponentProps> = ({ location }) => {
             <Logo role="presentation" alt="" />
           </Link>
         </TitleTag>
+        <hr className={styles.divider} />
 
         {showSupplementalBranding && (
           <div>
-            <hr className={styles.divider} />
-
             <p className={styles.tagline}>Code well. Code good.</p>
             <p className={styles.description}>{description}</p>
 
