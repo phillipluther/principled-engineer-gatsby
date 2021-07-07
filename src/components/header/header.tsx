@@ -6,7 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 import PrimaryNav from '../primary-nav';
 import SocialLinks from '../social-links';
 import Link from '../link';
-import Logo from '../../images/principled-engineer-logo-text.inline.svg';
+import Logo from '../../images/principled-engineer-logo-flag.inline.svg';
 
 import * as styles from './header.module.css';
 
@@ -24,7 +24,7 @@ const Header: React.FC<RouteComponentProps> = ({ location }) => {
 
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
-  const isDesktop = useMediaQuery({ query: '(min-width: 900px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1024px)' });
   const TitleTag = isRootPath ? 'h1' : 'p';
   const showSupplementalBranding = isRootPath || isDesktop;
   const { title, description } = data.site.siteMetadata;
@@ -40,16 +40,6 @@ const Header: React.FC<RouteComponentProps> = ({ location }) => {
             <Logo role="presentation" alt="" />
           </Link>
         </TitleTag>
-        <hr className={styles.divider} />
-
-        {showSupplementalBranding && (
-          <div>
-            <p className={styles.tagline}>Code well. Code good.</p>
-            <p className={styles.description}>{description}</p>
-
-            <hr className={styles.divider} />
-          </div>
-        )}
 
         <PrimaryNav />
         <SocialLinks />

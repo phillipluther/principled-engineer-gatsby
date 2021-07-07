@@ -13,12 +13,10 @@
   --line-height-normal: 1.5;
   --line-height-loose: 1.666;
 
-  --color-base: #374151;
-  --color-base-light: #6b7280;
-  --color-base-lightest: #d1d5db; 
-  --color-accent: #92400e;
-  --color-accent-dark: #5f0d00;
-  --color-accent-light: #fffbeb;
+  --color-base: #1E272C;
+  --color-base-light: #6b7479;
+  --color-base-lightest: #D1DADF;
+  --color-bg: #FFFFF9;
 
   --spacing-0: 4px;
   --spacing-1: 8px;
@@ -33,15 +31,23 @@
   --container-padding: var(--spacing-2);
 }
 
-@media (min-width: 560px) {
+@media (min-width: 640px) {
   :root {
     --container-padding: var(--spacing-3);
   }
+
+  html {
+    font-size: 1.066em;
+  }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1024px) {
   :root {
     --container-padding: var(--spacing-4);
+  }
+
+  html {
+    font-size: 1.2em;
   }
 }
 
@@ -59,6 +65,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--color-bg);
 }
 
 h1,
@@ -67,5 +74,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-display)
+  font-family: var(--font-display);
+  font-weight: 500;
 }

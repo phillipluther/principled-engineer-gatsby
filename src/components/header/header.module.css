@@ -4,58 +4,13 @@
 
 .title {
   margin: 0;
+  width: 160px;
 }
 
-/* .tagline {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: var(--font-size-2);
-}
-
-.description {
-  color: var(--color-base-light);
-  font-size: var(--font-size-0);
-  font-style: italic;
-  line-height: var(--line-height-tight);
-  margin: 0;
-}
-
-.divider {
-  background: none;
-  height: 0px;
-  margin: var(--spacing-2) 12.5%;
-  border: 0;
-  border-top: 1px solid var(--color-base-lightest);
-  position: relative;
-  z-index: -1;
-}
-
-.divider::after {
-  --diamond-size: 5px;
-  --diamond-offset: -8px;
-
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
+.homeLink {
   display: block;
-  width: var(--diamond-size);
-  height: var(--diamond-size);
-  border: var(--diamond-size) solid white;
-  background: var(--color-base-lightest);
-  margin-left: var(--diamond-offset);
-  margin-top: var(--diamond-offset);
-  transform: rotate(45deg);
-} */
-
-/* @media (min-width: 1000px) {
-  .wrapper {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 280px;
-  }
-} */
+  line-height: 0;
+}
 
 .skipNav {
   position: absolute;
