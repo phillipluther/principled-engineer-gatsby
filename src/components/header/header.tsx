@@ -1,8 +1,10 @@
 import * as React from 'react';
+import ReactDOM from 'react-dom';
 import { useStaticQuery, graphql } from 'gatsby';
 import { RouteComponentProps } from '@reach/router';
 import VisuallyHidden from '@reach/visually-hidden';
 import classnames from 'classnames';
+import { CSSTransition } from 'react-transition-group';
 import { useMediaQuery } from 'react-responsive';
 import PrimaryNav from '../primary-nav';
 import SocialLinks from '../social-links';
@@ -10,6 +12,8 @@ import Link from '../link';
 import Logo from '../../images/principled-engineer-logo-flag.inline.svg';
 
 import * as styles from './header.module.css';
+
+const portalEl = typeof document !== 'undefined' ? document.getElementById('portal') : null;
 
 const Header: React.FC<RouteComponentProps> = ({ location }) => {
   const data = useStaticQuery(graphql`
@@ -25,14 +29,9 @@ const Header: React.FC<RouteComponentProps> = ({ location }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
   const TitleTag = isRootPath ? 'h1' : 'p';
-  const useCondensedMenu = !useMediaQuery({ query: '(min-width: 560px)' });
+  const useCondensedMenu = !useMediaQuery({ query: '(min-width: 640px)' });
   const { title } = data.site.siteMetadata;
   const [isMenuOpen, toggleMenu] = React.useState(false);
-
-  const Menu = () => (<>
-    <PrimaryNav className={styles.nav} />
-    <SocialLinks />
-  </>);
 
   return (
     <>
@@ -54,7 +53,7 @@ const Header: React.FC<RouteComponentProps> = ({ location }) => {
             onClick={() => toggleMenu(!isMenuOpen)}
           >
             <span className={styles.hamburger} />
-            <span className={styles.menu} aria-hidden="true">
+            <span className={styles.menuLabel} aria-hidden="true">
               <span>M</span>
               <span>E</span>
               <span>N</span>
@@ -67,7 +66,32 @@ const Header: React.FC<RouteComponentProps> = ({ location }) => {
           </button>
         )}
 
-        {(isMenuOpen || !useCondensedMenu) && <Menu />}
+        {useCondensedMenu && portalEl ? ReactDOM.createPortal((
+          <CSSTransition
+            in={isMenuOpen}
+            timeout={420}
+            classNames={{
+              enter: styles.menuEnter,
+              enterActive: styles.menuEnterActive,
+              exit: styles.menuExit,
+              exitActive: styles.menuExitActive,
+            }}
+            unmountOnExit
+          >
+            <div className={styles.scroller}>
+              <PrimaryNav className={styles.nav} />
+              <SocialLinks />
+              <div className={styles.overlay} />
+            </div>
+          </CSSTransition>
+        ), portalEl) : null}
+        
+        {!useCondensedMenu ? (
+          <>
+            <PrimaryNav className={styles.nav} />
+            <SocialLinks />
+          </>
+        ) : null}
       </header>
       <a id="skipNav" />
     </>

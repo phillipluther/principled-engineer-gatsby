@@ -14,18 +14,18 @@ const PrimaryNav: React.FC<PrimaryNavProps> = ({ className, children, noHome }) 
     <nav className={wrapperClasses}>
       <ul className={styles.list}>
         {!noHome && (
-          <li className={styles.item}>
+          <li>
             <Link to="/" className={styles.link}>
               Blog Posts
             </Link>
           </li>
         )}
-        <li className={styles.item}>
+        <li>
           <Link to="/about" className={styles.link}>
             About
           </Link>
         </li>
-        <li className={styles.item}>
+        <li>
           <Link to="/contact" className={styles.link}>
             Contact
           </Link>

@@ -71,6 +71,13 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-portal',
+      options: {
+        key: 'portal',
+        id: 'portal',
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     // {
