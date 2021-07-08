@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { RouteComponentProps } from '@reach/router';
 import VisuallyHidden from '@reach/visually-hidden';
+import classnames from 'classnames';
 import { useMediaQuery } from 'react-responsive';
 import PrimaryNav from '../primary-nav';
 import SocialLinks from '../social-links';
@@ -16,7 +17,6 @@ const Header: React.FC<RouteComponentProps> = ({ location }) => {
       site {
         siteMetadata {
           title
-          description
         }
       }
     }
@@ -24,10 +24,15 @@ const Header: React.FC<RouteComponentProps> = ({ location }) => {
 
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
-  const isDesktop = useMediaQuery({ query: '(min-width: 1024px)' });
   const TitleTag = isRootPath ? 'h1' : 'p';
-  const showSupplementalBranding = isRootPath || isDesktop;
-  const { title, description } = data.site.siteMetadata;
+  const useCondensedMenu = !useMediaQuery({ query: '(min-width: 560px)' });
+  const { title } = data.site.siteMetadata;
+  const [isMenuOpen, toggleMenu] = React.useState(false);
+
+  const Menu = () => (<>
+    <PrimaryNav className={styles.nav} />
+    <SocialLinks />
+  </>);
 
   return (
     <>
@@ -41,8 +46,28 @@ const Header: React.FC<RouteComponentProps> = ({ location }) => {
           </Link>
         </TitleTag>
 
-        <PrimaryNav />
-        <SocialLinks />
+        {useCondensedMenu && (
+          <button
+            className={classnames(styles.trigger, { [styles.open]: isMenuOpen })}
+            aria-controls="primaryMenu"
+            aria-expanded={isMenuOpen}
+            onClick={() => toggleMenu(!isMenuOpen)}
+          >
+            <span className={styles.hamburger} />
+            <span className={styles.menu} aria-hidden="true">
+              <span>M</span>
+              <span>E</span>
+              <span>N</span>
+              <span>U</span>
+            </span>
+            <VisuallyHidden>
+              {`Menu is ${isMenuOpen ? 'open' : 'closed'};`}
+              {` click to ${isMenuOpen ? 'close' : 'open'}`}
+            </VisuallyHidden>
+          </button>
+        )}
+
+        {(isMenuOpen || !useCondensedMenu) && <Menu />}
       </header>
       <a id="skipNav" />
     </>

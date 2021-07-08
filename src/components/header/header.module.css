@@ -12,6 +12,16 @@
   line-height: 0;
 }
 
+.nav {
+  font-family: var(--font-display);
+  font-size: var(--font-size-2);
+  font-weight: var(--font-display-weight);
+}
+
+.nav a {
+  text-decoration: none;
+}
+
 .skipNav {
   position: absolute;
 }
@@ -29,10 +39,87 @@
 }
 
 .skipNav:focus {
-  left: 8px;
-  top: 8px;
-  padding: 8px;
-  background: var(--color-accent-light);
+  left: var(--spacing-2);
+  top: var(--spacing-2);
+  padding: var(--spacing-2);
+  background: var(--color-bg);
   z-index: 1000;
-  outline-offset: 0;
+  outline-offset: 0 !important;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: var(--font-size-0);
+  padding: var(--spacing-1) 2px 0 2px;
+  line-height: 1;
+}
+
+.trigger {
+  position: absolute;
+  right: var(--spacing-2);
+  top: var(--spacing-2);
+  display: block;
+  height: 48px;
+  width: 48px;
+  padding: var(--spacing-1);
+  border: 0;
+  background: none;
+}
+
+:global(.kb-active) .trigger:focus {
+  outline: 2px solid var(--color-base);
+}
+
+.hamburger {
+  --border-offset: 2px;
+
+  position: relative;
+}
+
+.hamburger,
+.hamburger::after,
+.hamburger::before {
+  display: block;
+  width: 100%;
+  height: 0;
+  border-top: var(--border-offset) solid var(--color-base);
+  transition: transform 300ms, width 300ms;
+}
+
+.hamburger::after,
+.hamburger::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.hamburger::before {
+  transform:
+    translate3d(0, -7px, 0);
+}
+
+.hamburger::after {
+  transform:
+    translate3d(0, 3px, 0);
+}
+
+.open {
+  --transform-scale: 0.666;
+}
+
+.open .hamburger {
+  width: 70%;
+  transform: translateX(4px) rotate(-45deg);
+}
+.open .hamburger::before {
+  transform:  translate3d(0, calc(-1 * var(--border-offset)), 0);
+}
+
+.open .hamburger::after {
+  transform:
+    rotate(90deg)
+    translate3d(calc(-1 * var(--border-offset)), 0, 0);
 }

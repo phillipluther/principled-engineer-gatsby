@@ -3,13 +3,13 @@
   position: relative;
 }
 
-.link:focus {
-  outline: 2px solid var(--color-accent-dark);
+:global(.kb-active) .link:focus {
+  outline: 2px solid var(--color-base);
   outline-offset: 4px;
 }
 
 .link:hover,
 :global(.kb-active) .link:focus {
-  color: var(--color-accent-dark);
+  color: var(--color-base);
   text-decoration: none;
 }

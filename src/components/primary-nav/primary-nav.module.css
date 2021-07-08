@@ -1,10 +1,11 @@
 .wrapper {
   font-size: inherit;
-  margin-left: -8px;
+  margin: var(--container-offset-x);
 }
 
 .list {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -12,7 +13,12 @@
 
 .link {
   display: inline-block;
+  width: 100%;
   line-height: 48px;
-  padding: 0 8px;
+  padding: var(--container-padding-x);
   white-space: nowrap;
+}
+
+.link:focus {
+  outline-offset: -2px !important;
 }
