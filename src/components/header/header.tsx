@@ -6,6 +6,7 @@ import VisuallyHidden from '@reach/visually-hidden';
 import classnames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import { useMediaQuery } from 'react-responsive';
+import trapFocus from './trap-focus';
 import PrimaryNav from '../primary-nav';
 import SocialLinks from '../social-links';
 import Link from '../link';
@@ -32,6 +33,8 @@ const Header: React.FC<RouteComponentProps> = ({ location }) => {
   const useCondensedMenu = !useMediaQuery({ query: '(min-width: 640px)' });
   const { title } = data.site.siteMetadata;
   const [isMenuOpen, toggleMenu] = React.useState(false);
+
+  let releaseFocusTrap: Function;
 
   return (
     <>
@@ -76,6 +79,8 @@ const Header: React.FC<RouteComponentProps> = ({ location }) => {
               exit: styles.menuExit,
               exitActive: styles.menuExitActive,
             }}
+            onEnter={() => releaseFocusTrap = trapFocus(portalEl)}
+            onExit={releaseFocusTrap}
             unmountOnExit
           >
             <div className={styles.scroller}>
