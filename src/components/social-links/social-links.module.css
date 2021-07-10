@@ -1,5 +1,18 @@
 .wrapper {
+  display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.link {
+  display: block;
+  width: 48px;
+  line-height: 48px;
+  font-size: var(--font-size-3);
+  text-align: center;
+}
+
+.link:focus {
+  outline-offset: -2px !important;
 }

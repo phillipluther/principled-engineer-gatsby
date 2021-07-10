@@ -15,26 +15,29 @@ const focusableElementNames: string[] = [
 
 type FocusableTypes = (HTMLButtonElement|HTMLInputElement|HTMLAnchorElement)[];
 
-export default function(rootEl: HTMLElement, prependedElements?: FocusableTypes): Function {
+export default function(rootEl: HTMLElement, onClose: Function): Function {
   let focusableElements: FocusableTypes = 
-    Array.from(rootEl.querySelectorAll(focusableElementNames.join(' ')));
-
-  if (prependedElements) {
-    focusableElements = prependedElements.concat(prependedElements);
-  }
+    Array.from(rootEl.querySelectorAll(focusableElementNames.join(',')));
 
   const firstFocusable = focusableElements.shift();
   const lastFocusable = focusableElements.pop();
 
   firstFocusable.focus();
 
-  function handleKeydown({ target, key, shiftKey: isShifting }) {
+  function handleKeydown(e) {
+    const { target, key, shiftKey: isShifting } = e;
     const isTab = key === 'Tab';
 
     if ((target === firstFocusable) && isTab && isShifting) {
+      e.preventDefault();
       lastFocusable.focus();
-    } else if ((target === lastFocusable) && isTab) {
+    } else if ((target === lastFocusable) && isTab && !isShifting) {
+      e.preventDefault();
       firstFocusable.focus();
+    }
+
+    if ((key === 'Escape') && onClose) {
+      onClose();
     }
   }
   

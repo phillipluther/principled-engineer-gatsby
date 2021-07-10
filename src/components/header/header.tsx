@@ -1,12 +1,10 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
 import { useStaticQuery, graphql } from 'gatsby';
 import { RouteComponentProps } from '@reach/router';
 import VisuallyHidden from '@reach/visually-hidden';
 import classnames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import { useMediaQuery } from 'react-responsive';
-import trapFocus from './trap-focus';
 import PrimaryNav from '../primary-nav';
 import SocialLinks from '../social-links';
 import Link from '../link';
@@ -42,55 +40,51 @@ const Header: React.FC<RouteComponentProps> = ({ location }) => {
         <Link external href="#skipNav" className={styles.skipNav}>Skip to Content</Link>
 
         <TitleTag className={styles.title}>
-          <Link to="/" className={styles.homeLink}>
+          <Link to="/" className={styles.homeLink} id="homeLink">
             <VisuallyHidden>{title}</VisuallyHidden>
             <Logo role="presentation" alt="" />
           </Link>
         </TitleTag>
 
         {useCondensedMenu && (
-          <button
-            className={classnames(styles.trigger, { [styles.open]: isMenuOpen })}
-            aria-controls="primaryMenu"
-            aria-expanded={isMenuOpen}
-            onClick={() => toggleMenu(!isMenuOpen)}
-          >
-            <span className={styles.hamburger} />
-            <span className={styles.menuLabel} aria-hidden="true">
-              <span>M</span>
-              <span>E</span>
-              <span>N</span>
-              <span>U</span>
-            </span>
-            <VisuallyHidden>
-              {`Menu is ${isMenuOpen ? 'open' : 'closed'};`}
-              {` click to ${isMenuOpen ? 'close' : 'open'}`}
-            </VisuallyHidden>
-          </button>
+          <>
+            <button
+              className={classnames(styles.trigger, { [styles.open]: isMenuOpen })}
+              aria-controls="primaryMenu"
+              aria-expanded={isMenuOpen}
+              onClick={() => toggleMenu(!isMenuOpen)}
+            >
+              <span className={styles.hamburger} />
+              <span className={styles.menuLabel} aria-hidden="true">
+                <span>M</span>
+                <span>E</span>
+                <span>N</span>
+                <span>U</span>
+              </span>
+              <VisuallyHidden>
+                {`Menu is ${isMenuOpen ? 'open' : 'closed'};`}
+                {` click to ${isMenuOpen ? 'close' : 'open'}`}
+              </VisuallyHidden>
+            </button>
+            <CSSTransition
+              in={isMenuOpen}
+              timeout={420}
+              classNames={{
+                enter: styles.menuEnter,
+                enterActive: styles.menuEnterActive,
+                exit: styles.menuExit,
+                exitActive: styles.menuExitActive,
+              }}
+              unmountOnExit
+            >
+              <div className={styles.drawer}>
+                <PrimaryNav className={styles.nav} />
+                <SocialLinks />
+              </div>
+            </CSSTransition>
+          </>
         )}
 
-        {useCondensedMenu && portalEl ? ReactDOM.createPortal((
-          <CSSTransition
-            in={isMenuOpen}
-            timeout={420}
-            classNames={{
-              enter: styles.menuEnter,
-              enterActive: styles.menuEnterActive,
-              exit: styles.menuExit,
-              exitActive: styles.menuExitActive,
-            }}
-            onEnter={() => releaseFocusTrap = trapFocus(portalEl)}
-            onExit={releaseFocusTrap}
-            unmountOnExit
-          >
-            <div className={styles.scroller}>
-              <PrimaryNav className={styles.nav} />
-              <SocialLinks />
-              <div className={styles.overlay} />
-            </div>
-          </CSSTransition>
-        ), portalEl) : null}
-        
         {!useCondensedMenu ? (
           <>
             <PrimaryNav className={styles.nav} />

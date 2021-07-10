@@ -49,7 +49,7 @@ const SocialLinks: React.FC = () => {
 
         return (
           <li key={href}>
-            <Link external href={href}>
+            <Link external href={href} className={styles.link}>
               <VisuallyHidden>{label}</VisuallyHidden>
               <Icon role="presentation" />
             </Link>
