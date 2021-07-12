@@ -1,5 +1,7 @@
 .wrapper {
   padding: var(--container-padding);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
 }
 
 .title {
@@ -154,4 +156,20 @@
 
 .drawer ul {
   justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .title {
+    margin-right: var(--spacing-4);
+  }
+
+  .nav {
+    padding-top: 0;
+  }
 }

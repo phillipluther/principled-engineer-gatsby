@@ -15,7 +15,7 @@
   display: inline-block;
   width: 100%;
   line-height: 48px;
-  padding: var(--container-padding-x);
+  padding: 0 var(--spacing-2);
   white-space: nowrap;
 }
 
