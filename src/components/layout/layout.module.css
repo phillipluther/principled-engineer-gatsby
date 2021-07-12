@@ -1,3 +1,5 @@
 .main {
-  padding: var(--spacing-2);
+  padding: var(--container-padding);
+  max-width: var(--container-max-width);
+  margin: 0 auto;
 }

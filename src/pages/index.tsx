@@ -2,7 +2,7 @@ import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
-import PostSummary from '../components/post-summary';
+import PostList from '../components/post-list';
 
 const BlogIndex: React.FC<PageProps> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
@@ -11,19 +11,7 @@ const BlogIndex: React.FC<PageProps> = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
-      <ol>
-        {posts.map((post) => {
-          const { slug } = post.fields;
-          const { excerpt } = post;
-          const { description, ...summaryProps } = post.frontmatter;
-
-          return (
-            <li key={post.fields.slug}>
-              <PostSummary slug={slug} description={description || excerpt} {...summaryProps} />
-            </li>
-          );
-        })}
-      </ol>
+      <PostList posts={posts} />
     </Layout>
   );
 };

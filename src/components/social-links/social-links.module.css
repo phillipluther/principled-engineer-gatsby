@@ -7,7 +7,7 @@
 
 .link {
   display: block;
-  width: 48px;
+  padding: 0 var(--spacing-2);
   line-height: 48px;
   font-size: var(--font-size-3);
   text-align: center;
