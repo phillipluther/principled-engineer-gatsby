@@ -3,7 +3,10 @@ import { graphql } from 'gatsby';
 import dashify from 'dashify';
 import VisuallyHidden from '@reach/visually-hidden';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { FaAngleDoubleRight } from 'react-icons/fa';
 import Link from '../link';
+
+import * as styles from './post-summary.module.css';
 
 interface PostSummaryProps {
   title: string;
@@ -23,26 +26,32 @@ const PostSummary: React.FC<PostSummaryProps> = ({
   tags,
 }) => {
   return (
-    <article className="post-summary">
-      <header>
-        <h3>
-          <Link to={slug} tabIndex={-1}>
+    <article className={styles.wrapper}>
+      <header className={styles.header}>
+        <h3 className={styles.title}>
+          <Link to={slug} tabIndex={-1} className={styles.titleLink}>
             {title}
           </Link>
         </h3>
-        <p>{date}</p>
+        <p className={styles.date}>{date}</p>
 
         {coverImage && (
-          <Link to={slug} tabIndex={-1}>
-            <GatsbyImage image={getImage(coverImage)} alt={title} role="presentation" />
+          <Link to={slug} tabIndex={-1} className={styles.imageLink}>
+            <GatsbyImage
+              className={styles.cover}
+              image={getImage(coverImage)}
+              alt={title}
+              role="presentation"
+            />
           </Link>
         )}
       </header>
 
-      <p>{description}</p>
+      <p className={styles.description}>{description}</p>
 
       <footer>
-        <Link to={slug}>
+        <Link to={slug} className={styles.cta}>
+          <FaAngleDoubleRight role="presentation" />
           Read More
           <VisuallyHidden> of {title}</VisuallyHidden>
         </Link>
